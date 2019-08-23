@@ -44,6 +44,12 @@
     </div>
   </form>
 
+
+  <div>
+    {{sub.data | json}}
+  </div>
+  <button [disabled]="landingPageForm.form.invalid" (click)="usersAbility.usersService.addUser(landingPageForm.form.value)">Add User</button>
+
   {{landingPageForm.form.value | json}}
 </ng-container>
 

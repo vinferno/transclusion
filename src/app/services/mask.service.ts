@@ -15,35 +15,26 @@ export class MaskService {
   }
 
   public phoneFormat(input: string): string {
-    console.log('format: Phone', input);
     const maskedInput = input.replace(/\D/g, '').match(Constants.patterns.PHONE_REGEX_MASK);
     const result = !maskedInput[ 2 ]
       ? maskedInput[ 1 ]
       : '(' + maskedInput[ 1 ] + ') ' + maskedInput[ 2 ] + (maskedInput[ 3 ]
       ? '-' + maskedInput[ 3 ]
       : '');
-
-    console.log('result: phoneFormat', result);
     return result;
   }
 
   public digitsOnlyFormat(input: string): string {
-    console.log('format: DigitsOnly', input);
     const result = input.replace(/\D/g, '');
-    console.log('result: DigitsOnly', result);
     return result;
   }
 
   public alphaWithSpacesFormat(input: string): string {
-
-    console.log('format: AlphaWithSpaces', input);
     const result = input.replace(/^\s/, '').replace(/[^a-zA-Z ]+/g, '');
-
-    console.log('result: AlphaWithSpace', result);
     return result;
   }
 
-  public trimmedFormat(input: string): string{
+  public trimmedFormat(input: string): string {
     return input.trim();
   }
 

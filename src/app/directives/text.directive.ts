@@ -26,15 +26,18 @@ export class TextDirective implements OnInit, OnDestroy {
   ngOnInit(): void {
     console.log('on init');
 
-    this.maskForm.addControl(
-      this.maskFormControlName,
-      this.fb.control(
-        '39903',
-        Validators.compose(
-          this.validations ? this.validations : []
+    if (!this.maskForm.get(this.maskFormControlName)){
+      this.maskForm.addControl(
+        this.maskFormControlName,
+        this.fb.control(
+          '39903',
+          Validators.compose(
+            this.validations ? this.validations : []
+          )
         )
-      )
-    );
+      );
+    }
+
 
     this.setValues(this.maskForm.get(this.maskFormControlName).value);
 
@@ -57,7 +60,6 @@ export class TextDirective implements OnInit, OnDestroy {
   }
 
   @HostListener('input') onInput(): void {
-    console.log('input');
     this.setValues(null);
   }
 
@@ -108,10 +110,8 @@ export class TextDirective implements OnInit, OnDestroy {
 
   private setValues(input: string) {
     const maskName = this.vfText + 'Format';
-    console.log('maskName', maskName, this.maskService[maskName]);
     const masked = this.maskService[maskName](input ? input : this.el.nativeElement.value);
     this.el.nativeElement.value = masked;
-    console.log('payloadMask', this.payloadMask);
     this.maskForm.get(this.maskFormControlName)
       .setValue(this.payloadMask ? this.maskService[this.payloadMask + 'Format'](masked) : masked);
   }
