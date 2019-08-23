@@ -1,0 +1,10 @@
+<p>
+  test works! {{something}} / {{ data | json}}
+</p>
+
+<ul>
+  <li *ngFor="let user of data.users">{{user| json}}</li>
+</ul>
+<button (click)="usersAbility.addUser({name: 'vinson2'})">
+  add user
+</button>

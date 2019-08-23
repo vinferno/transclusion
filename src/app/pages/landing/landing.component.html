@@ -1,0 +1,33 @@
+<vf-subs #sub>
+</vf-subs>
+<vf-users-ability #usersAbility >
+</vf-users-ability>
+<vf-form #landingPageForm></vf-form>
+
+<ng-container *ngIf="landingPageForm.form" >
+  <form [formGroup]="landingPageForm.form">
+    <input
+      type="text"
+      vfText="phone"
+      [maskForm]="landingPageForm.form"
+      [maskFormControlName]="'name'"
+      payloadMask="digitsOnly"
+    >
+    <div
+         class="alert alert-danger">
+
+      <ng-container *ngIf="landingPageForm.form.get('name').errors?.required; then requiredNumber; else goodName" >
+      </ng-container>
+      <ng-template #requiredNumber>
+        Number is required, yo.
+      </ng-template>
+      <ng-template #goodName>
+        Great Number!
+      </ng-template>
+
+    </div>
+  </form>
+
+  {{landingPageForm.form.value | json}}
+</ng-container>
+
