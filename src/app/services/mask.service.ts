@@ -34,6 +34,19 @@ export class MaskService {
     return result;
   }
 
+  public alphaWithSpacesFormat(input: string): string {
+
+    console.log('format: AlphaWithSpaces', input);
+    const result = input.replace(/^\s/, '').replace(/[^a-zA-Z ]+/g, '');
+
+    console.log('result: AlphaWithSpace', result);
+    return result;
+  }
+
+  public trimmedFormat(input: string): string{
+    return input.trim();
+  }
+
   public socialFormat ( value ) {
     return '(555)555-5555';
   }

@@ -8,9 +8,25 @@
   <form [formGroup]="landingPageForm.form">
     <input
       type="text"
-      vfText="phone"
+      vfText="alphaWithSpaces"
       [maskForm]="landingPageForm.form"
       [maskFormControlName]="'name'"
+      [validations]="[landingPageForm.validators.required]"
+      payloadMask="trimmed"
+    >
+    <input
+      type="text"
+      vfText="alphaWithSpaces"
+      [maskForm]="landingPageForm.form"
+      [maskFormControlName]="'name'"
+      [validations]="[landingPageForm.validators.required]"
+      payloadMask="trimmed"
+    >
+    <input
+      type="text"
+      vfText="phone"
+      [maskForm]="landingPageForm.form"
+      [maskFormControlName]="'test'"
       payloadMask="digitsOnly"
     >
     <div
