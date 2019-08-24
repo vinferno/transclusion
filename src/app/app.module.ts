@@ -11,6 +11,7 @@ import { DashComponent } from './pages/dash/dash.component';
 import { FormComponent } from './features/form/form.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { TextDirective } from './directives/text.directive';
+import { SelectorComponent } from './features/selector/selector.component';
 
 @NgModule({
   declarations : [
@@ -21,7 +22,8 @@ import { TextDirective } from './directives/text.directive';
     LandingComponent,
     DashComponent,
     FormComponent,
-    TextDirective
+    TextDirective,
+    SelectorComponent
   ],
   imports: [
     BrowserModule,
